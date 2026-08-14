@@ -1,0 +1,414 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>AnsoTech Official Business Documents Suite</title>
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700;800;900&display=swap');
+    
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+    
+    body {
+      font-family: 'Inter', sans-serif;
+      color: #334155;
+      background-color: #f8fafc;
+      -webkit-print-color-adjust: exact;
+    }
+
+    .page {
+      width: 210mm;
+      height: 297mm;
+      padding: 18mm;
+      margin: 0 auto 10px auto;
+      background: #ffffff;
+      position: relative;
+      page-break-after: always;
+      overflow: hidden;
+    }
+
+    @media print {
+      body { background: none; }
+      .page {
+        margin: 0;
+        box-shadow: none;
+        page-break-after: always;
+      }
+    }
+
+    /* Brand Header & Footer */
+    .header-bar {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      border-bottom: 2px solid #e2e8f0;
+      padding-bottom: 12px;
+      margin-bottom: 20px;
+    }
+
+    .header-logo {
+      height: 42px;
+      width: auto;
+      object-fit: contain;
+    }
+
+    .doc-type-badge {
+      font-size: 14px;
+      font-weight: 900;
+      color: #F97316;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+    }
+
+    .footer-bar {
+      position: absolute;
+      bottom: 12mm;
+      left: 18mm;
+      right: 18mm;
+      border-top: 1px solid #e2e8f0;
+      padding-top: 10px;
+      display: flex;
+      justify-content: space-between;
+      font-size: 10px;
+      color: #64748b;
+    }
+
+    /* Details Grid */
+    .info-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 16px;
+      margin-bottom: 20px;
+      background: #f8fafc;
+      padding: 14px;
+      border-radius: 6px;
+      border: 1px solid #e2e8f0;
+    }
+
+    .info-block h4 {
+      font-size: 10px;
+      text-transform: uppercase;
+      color: #06B6D4;
+      margin-bottom: 4px;
+      font-weight: 800;
+    }
+
+    .info-block p {
+      font-size: 11px;
+      color: #0F172A;
+      line-height: 1.4;
+    }
+
+    /* Headings */
+    h1 { font-size: 20px; font-weight: 800; color: #0F172A; margin-bottom: 10px; }
+    h2 { font-size: 14px; font-weight: 800; color: #0F172A; margin-top: 12px; margin-bottom: 8px; border-bottom: 2px solid #F97316; display: inline-block; padding-bottom: 2px; }
+    p { font-size: 11px; line-height: 1.5; color: #475569; margin-bottom: 10px; }
+
+    /* Tables */
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      margin-top: 12px;
+      margin-bottom: 16px;
+      font-size: 11px;
+    }
+
+    th {
+      background-color: #0F172A;
+      color: #ffffff;
+      text-align: left;
+      padding: 8px 10px;
+      font-weight: 700;
+    }
+
+    td {
+      padding: 8px 10px;
+      border-bottom: 1px solid #e2e8f0;
+      color: #334155;
+    }
+
+    tr:nth-child(even) td {
+      background-color: #f8fafc;
+    }
+
+    .text-right { text-align: right; }
+    .font-bold { font-weight: 700; }
+
+    /* Total Block */
+    .total-box {
+      width: 250px;
+      margin-left: auto;
+      background: #f8fafc;
+      border: 1px solid #e2e8f0;
+      border-radius: 6px;
+      padding: 10px;
+      font-size: 11px;
+      margin-bottom: 20px;
+    }
+
+    .total-row {
+      display: flex;
+      justify-content: space-between;
+      margin-bottom: 4px;
+    }
+
+    .total-row.grand {
+      border-top: 2px solid #F97316;
+      padding-top: 6px;
+      font-weight: 800;
+      font-size: 12px;
+      color: #0F172A;
+    }
+
+    /* Payment & Signature Cards */
+    .bank-card {
+      background: #0F172A;
+      color: #ffffff;
+      padding: 12px;
+      border-radius: 6px;
+      font-size: 10.5px;
+      margin-top: 15px;
+    }
+
+    .bank-card p { color: #cbd5e1; margin-bottom: 3px; }
+    .bank-card h4 { color: #06B6D4; margin-bottom: 6px; font-size: 11px; }
+
+    .signature-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 30px;
+      margin-top: 30px;
+    }
+
+    .sig-box {
+      border-top: 1px dashed #94a3b8;
+      padding-top: 6px;
+      font-size: 10.5px;
+      color: #475569;
+    }
+  </style>
+</head>
+<body>
+
+  <!-- ================= PAGE 1: PROJECT PROPOSAL & QUOTATION ================= -->
+  <div class="page">
+    <div class="header-bar">
+      <img src="logo.png" alt="AnsoTech Logo" class="header-logo" />
+      <span class="doc-type-badge">Project Proposal & Quotation</span>
+    </div>
+
+    <div class="info-grid">
+      <div class="info-block">
+        <h4>Prepared For</h4>
+        <p><strong>Client / Organization Name:</strong> [Client Company Name]</p>
+        <p><strong>Contact Person:</strong> [Client Name / Title]</p>
+        <p><strong>Email / Phone:</strong> [Client Email / Phone Number]</p>
+      </div>
+      <div class="info-block">
+        <h4>Document Metadata</h4>
+        <p><strong>Ref Number:</strong> AT-QUO-2026-001</p>
+        <p><strong>Date Issued:</strong> August 14, 2026</p>
+        <p><strong>Validity Period:</strong> 30 Days</p>
+      </div>
+    </div>
+
+    <h1>Custom Software & System Development</h1>
+    <p>AnsoTech Company is pleased to submit this proposal for engineering a custom business management portal to digitize operations, automate client processing, and secure organizational records.</p>
+
+    <h2>01. Project Scope & Deliverables</h2>
+    <table>
+      <thead>
+        <tr>
+          <th style="width: 5%;">#</th>
+          <th style="width: 65%;">Item & Scope Description</th>
+          <th style="width: 30%;" class="text-right">Amount (UGX)</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>1</td>
+          <td><strong>UI/UX Design & Architecture:</strong> Custom admin dashboards, client portals, and mobile-responsive layouts.</td>
+          <td class="text-right">1,200,000</td>
+        </tr>
+        <tr>
+          <td>2</td>
+          <td><strong>Core Software Backend & Database:</strong> User authentication, database state setup (PostgreSQL/MongoDB), and RESTful APIs.</td>
+          <td class="text-right">2,500,000</td>
+        </tr>
+        <tr>
+          <td>3</td>
+          <td><strong>Payment Gateway Integration:</strong> Automated MTN Mobile Money & Airtel Money collection API integration.</td>
+          <td class="text-right">800,000</td>
+        </tr>
+        <tr>
+          <td>4</td>
+          <td><strong>Deployment, SSL & Cloud Hosting:</strong> High-speed server configuration, Linux Ubuntu deployment & security setup.</td>
+          <td class="text-right">500,000</td>
+        </tr>
+      </tbody>
+    </table>
+
+    <div class="total-box">
+      <div class="total-row"><span>Subtotal:</span> <span>5,000,000 UGX</span></div>
+      <div class="total-row"><span>Tax / VAT (0%):</span> <span>0 UGX</span></div>
+      <div class="total-row grand"><span>Total Cost:</span> <span>5,000,000 UGX</span></div>
+    </div>
+
+    <h2>02. Payment Milestones</h2>
+    <p>• <strong>50% Initial Deposit:</strong> Paid upon signing and project launch (2,500,000 UGX)</p>
+    <p>• <strong>30% Staging Demo:</strong> Paid upon functional portal demonstration (1,500,000 UGX)</p>
+    <p>• <strong>20% Live Handover:</strong> Paid upon staff training and server deployment (1,000,000 UGX)</p>
+
+    <div class="signature-grid">
+      <div class="sig-box">
+        <p><strong>Prepared By:</strong> Engineering Team, AnsoTech Company</p>
+        <p>Sign & Stamp: ______________________</p>
+      </div>
+      <div class="sig-box">
+        <p><strong>Client Acceptance:</strong> [Authorized Client Name]</p>
+        <p>Sign & Stamp: ______________________</p>
+      </div>
+    </div>
+
+    <div class="footer-bar">
+      <span>AnsoTech Company | Kampala, Uganda | +256 777 036 617</span>
+      <span>Page 01</span>
+    </div>
+  </div>
+
+  <!-- ================= PAGE 2: OFFICIAL TAX INVOICE ================= -->
+  <div class="page">
+    <div class="header-bar">
+      <img src="logo.png" alt="AnsoTech Logo" class="header-logo" />
+      <span class="doc-type-badge" style="color: #0F172A;">Official Tax Invoice</span>
+    </div>
+
+    <div class="info-grid">
+      <div class="info-block">
+        <h4>Billed To</h4>
+        <p><strong>Client Name:</strong> [Client Company / Individual Name]</p>
+        <p><strong>Address:</strong> Kampala, Uganda</p>
+        <p><strong>Phone / Email:</strong> [Client Phone / Email]</p>
+      </div>
+      <div class="info-block">
+        <h4>Invoice Details</h4>
+        <p><strong>Invoice No:</strong> AT-INV-2026-088</p>
+        <p><strong>Invoice Date:</strong> August 14, 2026</p>
+        <p><strong>Payment Due:</strong> Upon Receipt / Within 7 Days</p>
+      </div>
+    </div>
+
+    <h1>Billing Statement</h1>
+
+    <table>
+      <thead>
+        <tr>
+          <th>Qty</th>
+          <th>Description</th>
+          <th class="text-right">Unit Price (UGX)</th>
+          <th class="text-right">Total Price (UGX)</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>1</td>
+          <td><strong>AnsoTech Custom Software Development (50% Deposit)</strong><br>Initial commitment fee for software architecture and database design.</td>
+          <td class="text-right">2,500,000</td>
+          <td class="text-right">2,500,000</td>
+        </tr>
+      </tbody>
+    </table>
+
+    <div class="total-box">
+      <div class="total-row"><span>Total Due Now:</span> <span class="font-bold">2,500,000 UGX</span></div>
+      <div class="total-row grand"><span>Balance Remaining:</span> <span>2,500,000 UGX</span></div>
+    </div>
+
+    <div class="bank-card">
+      <h4>Payment Terms & Banking Details</h4>
+      <p>Please make payments directly via Mobile Money Merchant / Bank Transfer using the credentials below:</p>
+      <p>• <strong>MTN Mobile Money:</strong> +256 777 036 617 (Anselm / AnsoTech)</p>
+      <p>• <strong>Airtel Money:</strong> +256 701 977 211 / +256 726 627 892</p>
+      <p>• <strong>Email Reference:</strong> ansotechcompany@gmail.com</p>
+    </div>
+
+    <div class="signature-grid">
+      <div class="sig-box">
+        <p><strong>Authorized By:</strong> AnsoTech Finance Department</p>
+        <p>Date: August 14, 2026</p>
+      </div>
+    </div>
+
+    <div class="footer-bar">
+      <span>AnsoTech Company | Kampala, Uganda | +256 726 627 892</span>
+      <span>Page 02</span>
+    </div>
+  </div>
+
+  <!-- ================= PAGE 3: OFFICIAL PAYMENT RECEIPT ================= -->
+  <div class="page">
+    <div class="header-bar">
+      <img src="logo.png" alt="AnsoTech Logo" class="header-logo" />
+      <span class="doc-type-badge" style="color: #06B6D4;">Payment Receipt</span>
+    </div>
+
+    <div class="info-grid">
+      <div class="info-block">
+        <h4>Received From</h4>
+        <p><strong>Client Name:</strong> [Client Company / Individual Name]</p>
+        <p><strong>Payment Method:</strong> Mobile Money / Bank Transfer</p>
+        <p><strong>Transaction ID:</strong> [Txn ID / Ref Number]</p>
+      </div>
+      <div class="info-block">
+        <h4>Receipt Metadata</h4>
+        <p><strong>Receipt No:</strong> AT-REC-2026-042</p>
+        <p><strong>Date Received:</strong> August 14, 2026</p>
+        <p><strong>Status:</strong> <span style="color: green; font-weight: 800;">CONFIRMED / PAID</span></p>
+      </div>
+    </div>
+
+    <h1>Official Receipt of Payment</h1>
+
+    <table>
+      <thead>
+        <tr>
+          <th>Description</th>
+          <th class="text-right">Amount Paid (UGX)</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td><strong>50% Initial Deposit for Software Development Project</strong><br>Ref: AT-INV-2026-088</td>
+          <td class="text-right font-bold" style="color: green;">2,500,000</td>
+        </tr>
+      </tbody>
+    </table>
+
+    <div class="total-box" style="border-color: green;">
+      <div class="total-row"><span>Amount Received:</span> <span class="font-bold">2,500,000 UGX</span></div>
+      <div class="total-row grand" style="border-top-color: green;"><span>Outstanding Balance:</span> <span>2,500,000 UGX</span></div>
+    </div>
+
+    <div style="margin-top: 30px; background: #f0fdf4; border: 1px solid #bbf7d0; padding: 14px; border-radius: 6px;">
+      <h3 style="color: #166534; font-size: 12px; margin-bottom: 4px;">Thank you for your business!</h3>
+      <p style="color: #15803d; font-size: 10.5px; margin-bottom: 0;">We have officially initialized your project development phase. Our engineering team will contact you with weekly staging updates.</p>
+    </div>
+
+    <div class="signature-grid">
+      <div class="sig-box">
+        <p><strong>Issued By:</strong> Accounts Team, AnsoTech Company</p>
+        <p>Sign & Stamp: ______________________</p>
+      </div>
+    </div>
+
+    <div class="footer-bar">
+      <span>AnsoTech Company | Kampala, Uganda | +256 777 036 617</span>
+      <span>Page 03</span>
+    </div>
+  </div>
+
+</body>
+</html>
