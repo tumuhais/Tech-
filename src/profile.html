@@ -1,0 +1,757 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AnsoTech - Enterprise Corporate Profile & Capabilities Documentation</title>
+    <style>
+        /* Page Setup & Strict 10-Page Layout Rules */
+        @page {
+            size: A4;
+            margin: 15mm 20mm;
+            @bottom-right {
+                content: "Page " counter(page) " of 10";
+                font-size: 10px;
+                color: #64748b;
+            }
+        }
+
+        :root {
+            --brand-navy: #0b132b;
+            --brand-deep: #1c2541;
+            --brand-cyan: #00b4d8;
+            --brand-orange: #f97316;
+            --text-dark: #1e293b;
+            --text-muted: #64748b;
+            --border-color: #cbd5e1;
+            --bg-light: #f8fafc;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            color: var(--text-dark);
+            line-height: 1.5;
+            margin: 0;
+            padding: 0;
+            background-color: #e2e8f0;
+        }
+
+        .document-wrapper {
+            max-width: 900px;
+            margin: 30px auto;
+            background: #ffffff;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+        }
+
+        /* Distinct Printable Page Sections */
+        .page-sheet {
+            width: 100%;
+            min-height: 1000px;
+            padding: 50px 60px;
+            box-sizing: border-box;
+            position: relative;
+            background: #ffffff;
+            border-bottom: 1px solid #cbd5e1;
+        }
+
+        /* Page Headers & Footers */
+        .page-header {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            border-bottom: 2px solid var(--border-color);
+            padding-bottom: 15px;
+            margin-bottom: 35px;
+        }
+
+        .company-logo {
+            height: 48px;
+            width: auto;
+            object-fit: contain;
+        }
+
+        .header-doc-title {
+            font-size: 11px;
+            font-weight: 700;
+            color: var(--text-muted);
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .page-footer {
+            position: absolute;
+            bottom: 30px;
+            left: 60px;
+            right: 60px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            border-top: 1px solid var(--border-color);
+            padding-top: 12px;
+            font-size: 11px;
+            color: var(--text-muted);
+        }
+
+        /* Typography & Components */
+        h1 {
+            font-size: 32px;
+            color: var(--brand-navy);
+            margin: 10px 0;
+            font-weight: 900;
+            letter-spacing: -0.5px;
+        }
+
+        h2 {
+            font-size: 20px;
+            color: var(--brand-navy);
+            border-left: 4px solid var(--brand-orange);
+            padding-left: 12px;
+            margin-top: 25px;
+            margin-bottom: 15px;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+
+        h3 {
+            font-size: 15px;
+            color: var(--brand-deep);
+            margin-top: 20px;
+            margin-bottom: 8px;
+        }
+
+        p, li {
+            font-size: 13.5px;
+            color: #334155;
+            text-align: justify;
+        }
+
+        ul, ol {
+            padding-left: 20px;
+            margin-top: 5px;
+        }
+
+        li {
+            margin-bottom: 6px;
+        }
+
+        .badge {
+            display: inline-block;
+            background: rgba(249, 115, 22, 0.1);
+            color: var(--brand-orange);
+            font-size: 11px;
+            font-weight: 700;
+            text-transform: uppercase;
+            padding: 5px 14px;
+            border-radius: 20px;
+            letter-spacing: 1px;
+            margin-bottom: 15px;
+        }
+
+        /* Diagram / ASCII Formatting */
+        pre {
+            background: var(--brand-navy);
+            color: #38bdf8;
+            padding: 18px;
+            border-radius: 6px;
+            font-family: 'Consolas', 'Courier New', Courier, monospace;
+            font-size: 11.5px;
+            line-height: 1.35;
+            overflow-x: auto;
+            border-left: 4px solid var(--brand-cyan);
+        }
+
+        /* Tables */
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 20px 0;
+            font-size: 12.5px;
+        }
+
+        th {
+            background: var(--brand-navy);
+            color: #ffffff;
+            text-align: left;
+            padding: 10px 14px;
+            font-weight: 600;
+        }
+
+        td {
+            padding: 10px 14px;
+            border-bottom: 1px solid var(--border-color);
+        }
+
+        tr:nth-child(even) {
+            background-color: var(--bg-light);
+        }
+
+        .price-tag {
+            font-weight: 700;
+            color: var(--brand-orange);
+        }
+
+        /* Highlight Boxes */
+        .info-card {
+            background: #f1f5f9;
+            border-left: 4px solid var(--brand-navy);
+            padding: 15px;
+            margin: 15px 0;
+            border-radius: 0 6px 6px 0;
+        }
+
+        .info-card h4 {
+            margin: 0 0 5px 0;
+            color: var(--brand-navy);
+            font-size: 14px;
+        }
+
+        .info-card p {
+            margin: 0;
+            font-size: 12.5px;
+        }
+
+        /* Print Media Overrides */
+        @media print {
+            body {
+                background: white;
+            }
+            .document-wrapper {
+                box-shadow: none;
+                margin: 0;
+                width: 100%;
+            }
+            .page-sheet {
+                border-bottom: none;
+                padding: 0;
+                margin: 0;
+                min-height: auto;
+                page-break-after: always;
+            }
+            .page-sheet:last-child {
+                page-break-after: avoid;
+            }
+        }
+    </style>
+</head>
+<body>
+
+<div class="document-wrapper">
+
+    <!-- PAGE 1: COVER PAGE -->
+    <div class="page-sheet">
+        <div style="text-align: center; padding-top: 100px; padding-bottom: 40px;">
+            <img src="logo.png" alt="AnsoTech Company Logo" class="company-logo" style="height: 110px; margin-bottom: 25px;" onerror="this.style.display='none'; document.getElementById('logo-fallback').style.display='block';">
+            <div id="logo-fallback" style="display:none; font-size: 36px; font-weight: 900; color: #0b132b; margin-bottom: 25px;">ANSOTECH</div>
+            
+            <span class="badge">Official Enterprise Documentation</span>
+            <h1 style="font-size: 36px; margin-top: 20px;">ANSOTECH DIGITAL SYSTEMS</h1>
+            <p style="font-size: 18px; color: var(--text-muted); max-width: 650px; margin: 15px auto 40px auto;">
+                Full-Stack Software Architecture, Modern Web Platforms, Campus Network Engineering & Wazuh SIEM Cyber Security
+            </p>
+        </div>
+
+        <div style="background: var(--brand-navy); color: white; padding: 30px; border-radius: 8px; margin-top: 40px;">
+            <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 20px; font-size: 13px;">
+                <div>
+                    <strong style="color: var(--brand-cyan);">Document Title:</strong> Corporate Capabilities & Technical Book<br>
+                    <strong style="color: var(--brand-cyan);">Document Reference:</strong> AT-DOC-2026-V10<br>
+                    <strong style="color: var(--brand-cyan);">Classification:</strong> Enterprise Reference / Public
+                </div>
+                <div>
+                    <strong style="color: var(--brand-cyan);">Primary Location:</strong> Kampala, Uganda<br>
+                    <strong style="color: var(--brand-cyan);">Publication Year:</strong> 2026 / 2027<br>
+                    <strong style="color: var(--brand-cyan);">Web Portal:</strong> ansotech.vercel.app
+                </div>
+            </div>
+        </div>
+
+        <div class="page-footer">
+            <span>AnsoTech Digital Systems • Technical Documentation</span>
+            <span>Page 1 of 10</span>
+        </div>
+    </div>
+
+    <!-- PAGE 2: CORPORATE OVERVIEW -->
+    <div class="page-sheet">
+        <div class="page-header">
+            <img src="logo.png" alt="AnsoTech" class="company-logo">
+            <span class="header-doc-title">Section 1 • Executive Overview</span>
+        </div>
+
+        <h2>1. Corporate Overview & Vision</h2>
+        <p><strong>AnsoTech Digital Systems</strong> is a technology engineering firm based in Kampala, Uganda. The organization operates at the intersection of enterprise software development and secure network infrastructure management, catering to commercial enterprises, microfinance organizations, educational institutions, and public sector organizations.</p>
+
+        <div class="info-card">
+            <h4>Core Capability Statement</h4>
+            <p>AnsoTech delivers end-to-end digital transformation—ranging from high-performance React/Node.js web portals and PostgreSQL databases to physical multi-building Cisco campus network designs and automated Wazuh SIEM security monitoring.</p>
+        </div>
+
+        <h3>1.1 Organizational Structure</h3>
+        <p>Our operational model is segmented into two main technical divisions that collaborate on integrated client projects:</p>
+        
+        <ul>
+            <li><strong>Software Systems Division:</strong> Focuses on full-stack web applications, REST API integration, database schema optimization (PostgreSQL, MongoDB, SQL Server), and modern responsive UI design.</li>
+            <li><strong>Network & Infrastructure Division:</strong> Oversees physical/virtual network topology planning, Cisco switch configuration (VLANs, STP, EtherChannel), hypervisor management (VMware/Ubuntu), and cybersecurity threat monitoring.</li>
+        </ul>
+
+        <h3>1.2 Engineering Philosophy</h3>
+        <p>Every system deployed by AnsoTech adheres to three non-negotiable standards:</p>
+        <ol>
+            <li><strong>Scalability by Default:</strong> Code bases and network addressing schemes are engineered to accommodate 10x growth without refactoring.</li>
+            <li><strong>Data Integrity & ACID Compliance:</strong> Financial, medical, and operational record systems use strict relational constraints to prevent data corruption.</li>
+            <li><strong>Proactive Security:</strong> Threat prevention, access control lists (ACLs), and automated SIEM auditing are built into the network design rather than added after deployment.</li>
+        </ol>
+
+        <div class="page-footer">
+            <span>AnsoTech Digital Systems • Technical Documentation</span>
+            <span>Page 2 of 10</span>
+        </div>
+    </div>
+
+    <!-- PAGE 3: SOFTWARE ARCHITECTURE STACK -->
+    <div class="page-sheet">
+        <div class="page-header">
+            <img src="logo.png" alt="AnsoTech" class="company-logo">
+            <span class="header-doc-title">Section 2 • Software Engineering</span>
+        </div>
+
+        <h2>2. Full-Stack Software Engineering Architecture</h2>
+        <p>AnsoTech utilizes a modern, modular JavaScript ecosystem engineered for high concurrency, low latency, and straightforward cloud deployment.</p>
+
+<pre>
++-----------------------------------------------------------------------+
+|                         CLIENT FRONTEND LAYER                         |
+|   React.js / Next.js  |  Tailwind CSS  |  Dynamic State Management     |
++-----------------------------------++----------------------------------+
+                                    || REST / JSON API
++-----------------------------------vv----------------------------------+
+|                         BACKEND SERVICE LAYER                         |
+|   Node.js Server  |  Express Router  |  JWT Auth & Security Middleware|
++-----------------------------------++----------------------------------+
+                                    || Object Relational Mapping (ORM)
++-----------------------------------vv----------------------------------+
+|                         PERSISTENCE & STORAGE                         |
+|   PostgreSQL (ACID Transactions)  |  MongoDB (Document Catalogs)       |
++-----------------------------------------------------------------------+
+</pre>
+
+        <h3>2.1 Frontend Development Standards</h3>
+        <ul>
+            <li><strong>React Components:</strong> Component-driven architecture built with reusable JSX modules, context state handling, and optimized re-render execution.</li>
+            <li><strong>Responsive Styling:</strong> Utilization of Tailwind CSS and custom rulesets for cross-device compatibility (mobile, tablet, desktop).</li>
+            <li><strong>Performance Optimization:</strong> Lazy-loaded routes, dynamic image optimization, and lightweight bundled assets hosted on global CDN networks.</li>
+        </ul>
+
+        <h3>2.2 Backend & API Architecture</h3>
+        <ul>
+            <li><strong>Node.js & Express:</strong> Asynchronous, non-blocking REST API endpoints structured around MVC design patterns.</li>
+            <li><strong>Authentication & Authorization:</strong> JsonWebTokens (JWT), salted bcrypt password hashing, and granular role-based access controls (RBAC).</li>
+            <li><strong>Database Management:</strong> Complex relational queries and schema migrations on PostgreSQL, alongside NoSQL document modeling using Mongoose.</li>
+        </ul>
+
+        <div class="page-footer">
+            <span>AnsoTech Digital Systems • Technical Documentation</span>
+            <span>Page 3 of 10</span>
+        </div>
+    </div>
+
+    <!-- PAGE 4: FEATURED SOFTWARE PRODUCTS -->
+    <div class="page-sheet">
+        <div class="page-header">
+            <img src="logo.png" alt="AnsoTech" class="company-logo">
+            <span class="header-doc-title">Section 3 • Software Product Suite</span>
+        </div>
+
+        <h2>3. Key Enterprise Software Solutions</h2>
+
+        <h3>3.1 Microfinance & Loan Tracking Systems</h3>
+        <p>A specialized ledger platform designed for microfinance institutions and credit facilities operating in emerging markets.</p>
+        <ul>
+            <li><strong>Borrower Management:</strong> KYC document storage, borrower profile logs, and loan eligibility scoring.</li>
+            <li><strong>Loan Amortization Engine:</strong> Automated interest calculation (flat rate & reducing balance) with dynamic schedule generation.</li>
+            <li><strong>Automated Notifications:</strong> Integrated WhatsApp & SMS messaging via Twilio API for automated payment reminders and digital payment receipts.</li>
+        </ul>
+
+        <h3>3.2 E-Commerce & Retail ERP Platforms</h3>
+        <p>Scalable digital commerce platforms built for multi-category retail businesses and product distributors.</p>
+        <ul>
+            <li><strong>Dynamic Catalog Filtering:</strong> Instant search, category refinement, and SKU variation handling.</li>
+            <li><strong>Cart & Session Persistence:</strong> Syncing shopping carts across client local storage and database user sessions.</li>
+            <li><strong>Payment Gateway Integration:</strong> Automated mobile money API checkout, card payment routing, and real-time inventory updates.</li>
+        </ul>
+
+        <h3>3.3 Healthcare EHR & School Management Portals</h3>
+        <ul>
+            <li><strong>Electronic Health Record (EHR) Portal:</strong> Patient queue management, clinical histories, billing ledgers, and pharmacy point-of-sale inventory tracking with automated drug expiration alerts.</li>
+            <li><strong>Educational ERP Platform:</strong> Student admission logs, fee collection ledgers, automated grade transcript processing, and parent communication channels.</li>
+        </ul>
+
+        <div class="page-footer">
+            <span>AnsoTech Digital Systems • Technical Documentation</span>
+            <span>Page 4 of 10</span>
+        </div>
+    </div>
+
+    <!-- PAGE 5: ENTERPRISE NETWORKING -->
+    <div class="page-sheet">
+        <div class="page-header">
+            <img src="logo.png" alt="AnsoTech" class="company-logo">
+            <span class="header-doc-title">Section 4 • Network Infrastructure</span>
+        </div>
+
+        <h2>4. Enterprise Network Infrastructure Engineering</h2>
+        <p>AnsoTech designs, provisions, and maintains enterprise campus networks for organizations requiring fault-tolerant, high-throughput local connectivity.</p>
+
+<pre>
+                        +-----------------------+
+                        |   ISP Gateway Router  |
+                        +-----------+-----------+
+                                    |
+                        +-----------v-----------+
+                        |  Core Switch (Layer 3)|
+                        +-----+-----------+-----+
+                              |           |
+            +-----------------+           +-----------------+
+            |                                               |
++-----------v-----------+                       +-----------v-----------+
+| Building A Switch     |                       | Building B Switch     |
+| VLAN 10: Admin        |                       | VLAN 30: Lab / Staff  |
+| VLAN 20: Finance      |                       | VLAN 40: Guest / Wi-Fi|
++-----------------------+                       +-----------------------+
+</pre>
+
+        <h3>4.1 VLAN Segmentation & Topology Planning</h3>
+        <p>To reduce broadcast domains and secure inter-departmental communications, networks are segmented into dedicated Virtual LANs:</p>
+        
+        <table>
+            <thead>
+                <tr>
+                    <th>VLAN ID</th>
+                    <th>Subnet Allocation</th>
+                    <th>Department / Usage</th>
+                    <th>Security Access Level</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>VLAN 10</td>
+                    <td>192.168.10.0/24</td>
+                    <td>Corporate Administration</td>
+                    <td>High (Restricted Access)</td>
+                </tr>
+                <tr>
+                    <td>VLAN 20</td>
+                    <td>192.168.20.0/24</td>
+                    <td>Finance & Payroll Systems</td>
+                    <td>Critical (Isolated)</td>
+                </tr>
+                <tr>
+                    <td>VLAN 30</td>
+                    <td>192.168.30.0/24</td>
+                    <td>Staff & Workstations</td>
+                    <td>Medium (Filtered Internet)</td>
+                </tr>
+                <tr>
+                    <td>VLAN 40</td>
+                    <td>10.0.40.0/22</td>
+                    <td>Guest Wi-Fi Access</td>
+                    <td>Low (Internet Only / No LAN)</td>
+                </tr>
+            </tbody>
+        </table>
+
+        <h3>4.2 Layer 2 & Layer 3 Protocols</h3>
+        <ul>
+            <li><strong>Spanning Tree Protocol (STP) & PortFast:</strong> Preventing switching loops while enabling rapid port transition for edge user devices.</li>
+            <li><strong>EtherChannel Link Aggregation:</strong> Bundling multiple physical trunk links into single logical links to maximize bandwidth and provide hardware redundancy.</li>
+            <li><strong>Inter-VLAN Routing & ACLs:</strong> Configuring Layer 3 switch interfaces and router Access Control Lists to enforce strict inter-departmental traffic rules.</li>
+        </ul>
+
+        <div class="page-footer">
+            <span>AnsoTech Digital Systems • Technical Documentation</span>
+            <span>Page 5 of 10</span>
+        </div>
+    </div>
+
+    <!-- PAGE 6: VIRTUALIZATION & LINUX ADMIN -->
+    <div class="page-sheet">
+        <div class="page-header">
+            <img src="logo.png" alt="AnsoTech" class="company-logo">
+            <span class="header-doc-title">Section 5 • Virtualization & Systems</span>
+        </div>
+
+        <h2>5. Virtualization & System Administration</h2>
+        <p>AnsoTech builds host environment infrastructure that maximizes physical hardware utilization while ensuring isolated execution spaces for database instances, application servers, and security appliances.</p>
+
+        <h3>5.1 Enterprise Hypervisor Deployment</h3>
+        <p>We deploy virtualization technologies—specifically <strong>VMware Workstation Pro</strong> and <strong>VMware ESXi</strong>—to host multiple virtual machines on centralized server hardware.</p>
+
+        <ul>
+            <li><strong>Network Adapter Modes:</strong> Custom configuration of Bridged networking for publicly reachable instances and Host-Only networks for secure internal databases.</li>
+            <li><strong>Virtual Disk Allocation:</strong> Dynamic thin provisioning and SCSI disk controller configurations for optimized I/O speeds.</li>
+            <li><strong>Snapshot Management:</strong> Scheduled VM snapshots before critical updates to ensure zero-downtime rollbacks if configuration failures occur.</li>
+        </ul>
+
+        <h3>5.2 Linux Server Hardening (Ubuntu Server)</h3>
+        <p>Ubuntu Server serves as our primary OS choice for running backend web platforms, reverse proxies, and cybersecurity software.</p>
+
+<pre>
+# Sample Hardening Workflow Implemented by AnsoTech Engineers
+$ sudo ufw default deny incoming
+$ sudo ufw default allow outgoing
+$ sudo ufw allow 22/tcp comment 'SSH Access'
+$ sudo ufw allow 80,443/tcp comment 'Web Traffic'
+$ sudo ufw enable
+</pre>
+
+        <ul>
+            <li><strong>SSH Key Authentication:</strong> Disabling root SSH logins and password-based SSH access in favor of RSA/Ed25519 key-pair validation.</li>
+            <li><strong>Reverse Proxying:</strong> Configuring Nginx as a reverse proxy for Node.js applications, handling SSL/TLS termination and load balancing.</li>
+            <li><strong>Automated Backup Scripts:</strong> Cron-driven database dumps exported off-site via encrypted SSH file transfer protocols.</li>
+        </ul>
+
+        <div class="page-footer">
+            <span>AnsoTech Digital Systems • Technical Documentation</span>
+            <span>Page 6 of 10</span>
+        </div>
+    </div>
+
+    <!-- PAGE 7: CYBERSECURITY & WAZUH SIEM -->
+    <div class="page-sheet">
+        <div class="page-header">
+            <img src="logo.png" alt="AnsoTech" class="company-logo">
+            <span class="header-doc-title">Section 6 • Cybersecurity & SIEM</span>
+        </div>
+
+        <h2>6. Security Information & Event Management (SIEM)</h2>
+        <p>AnsoTech deploys <strong>Wazuh SIEM</strong> to provide clients with continuous visibility into network anomalies, unauthorized system access, file integrity changes, and regulatory compliance status.</p>
+
+<pre>
++---------------------+     +---------------------+     +---------------------+
+| Network Endpoint A  |     | Ubuntu Server B     |     | Cisco Core Switch   |
+| Wazuh Agent Active  |     | Wazuh Agent Active  |     | Syslog Exporter     |
++----------+----------+     +----------+----------+     +----------+----------+
+           |                           |                           |
+           +---------------------------+---------------------------+
+                                       | Encrypted Log Shipping
+                            +----------v----------+
+                            | WAZUH INDEXER &     |
+                            | MANAGER SERVER      |
+                            +----------+----------+
+                                       |
+                            +----------v----------+
+                            | WAZUH DASHBOARD     |
+                            | Real-Time Alerts    |
+                            +---------------------+
+</pre>
+
+        <h3>6.1 Core Security Capabilities</h3>
+        <ul>
+            <li><strong>Log Analysis & Correlation:</strong> Centralizing log collection from switches, Linux servers, Windows workstations, and database engines into a unified search index.</li>
+            <li><strong>Intrusion Detection (FIM):</strong> File Integrity Monitoring tracking unauthorized changes to critical system files (`/etc/passwd`, system binaries, registry keys).</li>
+            <li><strong>Vulnerability Management:</strong> Automated scanning of system packages against national vulnerability databases (CVEs) to highlight unpatched security flaws.</li>
+            <li><strong>Active Response Engine:</strong> Automatically executing IP block commands on firewalls when brute-force SSH or HTTP login attempts are detected.</li>
+        </ul>
+
+        <div class="page-footer">
+            <span>AnsoTech Digital Systems • Technical Documentation</span>
+            <span>Page 7 of 10</span>
+        </div>
+    </div>
+
+    <!-- PAGE 8: PROJECT METHODOLOGY -->
+    <div class="page-sheet">
+        <div class="page-header">
+            <img src="logo.png" alt="AnsoTech" class="company-logo">
+            <span class="header-doc-title">Section 7 • Project Methodology</span>
+        </div>
+
+        <h2>7. Engineering Methodology & Delivery Lifecycle</h2>
+        <p>To ensure high standards and transparent milestone tracking across both software and network engineering projects, AnsoTech follows a structured 5-phase delivery model.</p>
+
+        <div class="info-card">
+            <h4>Phase 1: Discovery & Technical Requirements Gathering</h4>
+            <p>Conducting detailed physical site surveys for network installations, or mapping out data models, user roles, and functional scope for software systems.</p>
+        </div>
+
+        <div class="info-card">
+            <h4>Phase 2: Architecture Blueprinting & Schema Design</h4>
+            <p>Creating CAD network topology diagrams, dynamic IP addressing tables, database Entity-Relationship Diagrams (ERDs), and Figma application wireframes.</p>
+        </div>
+
+        <div class="info-card">
+            <h4>Phase 3: Core Implementation Sprint</h4>
+            <p>Agile software development iterations combined with hardware provisioning, cable termination, switch flashing, and virtualization server installation.</p>
+        </div>
+
+        <div class="info-card">
+            <h4>Phase 4: Security Auditing & Quality Assurance</h4>
+            <p>Executing stress tests, SQL injection checks, network vulnerability scans via Wazuh SIEM, and User Acceptance Testing (UAT) with key client stakeholders.</p>
+        </div>
+
+        <div class="info-card">
+            <h4>Phase 5: Production Deployment & Technical Handover</h4>
+            <p>Final domain cutover, cloud deployment, physical network commissioning, complete documentation delivery, and administrator training sessions.</p>
+        </div>
+
+        <div class="page-footer">
+            <span>AnsoTech Digital Systems • Technical Documentation</span>
+            <span>Page 8 of 10</span>
+        </div>
+    </div>
+
+    <!-- PAGE 9: PRICING BOOK -->
+    <div class="page-sheet">
+        <div class="page-header">
+            <img src="logo.png" alt="AnsoTech" class="company-logo">
+            <span class="header-doc-title">Section 8 • Pricing & Commercial Terms</span>
+        </div>
+
+        <h2>8. Commercial Pricing Handbook (2026/2027)</h2>
+
+        <h3>8.1 Software Development Solutions</h3>
+        <table>
+            <thead>
+                <tr>
+                    <th>Package Category</th>
+                    <th>Included Core Deliverables</th>
+                    <th>Tech Stack</th>
+                    <th>Standard Fee</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td><strong>Business Web Portal</strong></td>
+                    <td>Responsive UI, Contact System, SEO, CMS Admin</td>
+                    <td>React, Tailwind, Vercel</td>
+                    <td class="price-tag">$600</td>
+                </tr>
+                <tr>
+                    <td><strong>E-Commerce Platform</strong></td>
+                    <td>Catalog, Cart Sync, Mobile Money API, Admin Dashboard</td>
+                    <td>React, Node, Express, MongoDB</td>
+                    <td class="price-tag">$1,500</td>
+                </tr>
+                <tr>
+                    <td><strong>Microfinance Platform</strong></td>
+                    <td>Borrower Registry, Interest Engine, Reminders, Ledger</td>
+                    <td>React, Node, PostgreSQL</td>
+                    <td class="price-tag">$2,200</td>
+                </tr>
+                <tr>
+                    <td><strong>School ERP System</strong></td>
+                    <td>Student Records, Grading Engine, Fees, Parent Portal</td>
+                    <td>React, Node, PostgreSQL</td>
+                    <td class="price-tag">$2,800</td>
+                </tr>
+                <tr>
+                    <td><strong>Hospital EHR System</strong></td>
+                    <td>Patient Queue, Medical Logs, Pharmacy POS, Expiry Alerts</td>
+                    <td>React, Node, Express, MongoDB</td>
+                    <td class="price-tag">$3,200</td>
+                </tr>
+            </tbody>
+        </table>
+
+        <h3>8.2 Network & Security Infrastructure Engineering</h3>
+        <table>
+            <thead>
+                <tr>
+                    <th>Infrastructure Package</th>
+                    <th>Technical Scope & Hardware Deliverables</th>
+                    <th>Starting Fee</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td><strong>Single Building Setup</strong></td>
+                    <td>Structural cabling plan, Cisco router/switch setup, Wi-Fi coverage</td>
+                    <td class="price-tag">$800</td>
+                </tr>
+                <tr>
+                    <td><strong>Campus Enterprise Network</strong></td>
+                    <td>Multi-building VLANs, EtherChannel links, Inter-VLAN routing, ACLs</td>
+                    <td class="price-tag">$2,500</td>
+                </tr>
+                <tr>
+                    <td><strong>Wazuh SIEM Deployment</strong></td>
+                    <td>Ubuntu server install, Wazuh manager config, log agent rollouts</td>
+                    <td class="price-tag">$1,800</td>
+                </tr>
+                <tr>
+                    <td><strong>Fully Managed Infrastructure</strong></td>
+                    <td>Campus Network + VMware Host Servers + Live Wazuh Security Suite</td>
+                    <td class="price-tag">$4,500</td>
+                </tr>
+            </tbody>
+        </table>
+
+        <div class="page-footer">
+            <span>AnsoTech Digital Systems • Technical Documentation</span>
+            <span>Page 9 of 10</span>
+        </div>
+    </div>
+
+    <!-- PAGE 10: CONTACT & CORPORATE INFORMATION -->
+    <div class="page-sheet">
+        <div class="page-header">
+            <img src="logo.png" alt="AnsoTech" class="company-logo">
+            <span class="header-doc-title">Section 9 • Corporate Directory</span>
+        </div>
+
+        <h2>9. Corporate Contact & Engagement</h2>
+        <p>To engage AnsoTech for software development contracts, network architecture deployments, or security audits, contact our technical desk through the channels below:</p>
+
+        <div style="background: var(--brand-navy); color: white; padding: 35px; border-radius: 8px; margin-top: 30px;">
+            <div style="display: flex; align-items: center; gap: 20px; margin-bottom: 25px;">
+                <img src="logo.png" alt="AnsoTech Logo" style="height: 60px; background: white; padding: 6px; border-radius: 6px;" onerror="this.style.display='none'">
+                <div>
+                    <h3 style="color: white; margin: 0; font-size: 22px;">AnsoTech Digital Systems</h3>
+                    <span style="color: var(--brand-cyan); font-size: 13px;">Software Architecture & Network Engineering</span>
+                </div>
+            </div>
+
+            <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 20px; font-size: 13.5px; border-top: 1px solid rgba(255,255,255,0.1); padding-top: 20px;">
+                <div>
+                    <strong style="color: var(--brand-orange);">Headquarters Location:</strong><br>
+                    Kampala, Uganda
+                </div>
+                <div>
+                    <strong>Direct Technical Desk:</strong><br>
+                    +256 726 627 892
+                </div>
+                <div>
+                    <strong style="color: var(--brand-orange);">Official Email:</strong><br>
+                    info@ansotech.com
+                </div>
+                <div>
+                    <strong>Live Web Portal:</strong><br>
+                    ansotech.vercel.app
+                </div>
+                <div>
+                    <strong style="color: var(--brand-orange);">Working Hours:</strong><br>
+                    Monday – Saturday: 8:00 AM – 6:00 PM (EAT)
+                </div>
+                <div>
+                    <strong>Emergency On-Call:</strong><br>
+                    24/7 Security & Infrastructure Support
+                </div>
+            </div>
+        </div>
+
+        <div style="margin-top: 50px; text-align: center; border-top: 1px solid var(--border-color); padding-top: 30px;">
+            <p style="font-size: 12px; color: var(--text-muted);">
+                © 2026 AnsoTech Digital Systems. All rights reserved. This document is provided for official capabilities evaluation and client procurement purposes.
+            </p>
+        </div>
+
+        <div class="page-footer">
+            <span>AnsoTech Digital Systems • Technical Documentation</span>
+            <span>Page 10 of 10</span>
+        </div>
+    </div>
+
+</div>
+
+</body>
+</html>

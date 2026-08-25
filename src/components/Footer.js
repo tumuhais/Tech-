@@ -19,7 +19,6 @@ const Footer = () => {
           
           {/* COLUMN 1 & 2: BRANDING & LOGO */}
           <div className="lg:col-span-2 space-y-4">
-            {/* FIXED LINE 22: Replaced href="#" with valid section ID href="#top" */}
             <a href="#top" className="flex items-center space-x-3 group">
               <img 
                 src="/logo.png" 
@@ -39,16 +38,40 @@ const Footer = () => {
             
             {/* Social Links */}
             <div className="flex space-x-4 pt-2">
-              <a href="https://linkedin.com" target="_blank" rel="noopener noreferrer" className="p-2.5 rounded-lg bg-white/5 hover:bg-brand-orange text-gray-300 hover:text-white transition-all duration-200">
+              <a 
+                href="https://linkedin.com" 
+                target="_blank" 
+                rel="noopener noreferrer" 
+                aria-label="LinkedIn"
+                className="p-2.5 rounded-lg bg-white/5 hover:bg-brand-orange text-gray-300 hover:text-white transition-all duration-200"
+              >
                 <FaLinkedin className="w-4 h-4" />
               </a>
-              <a href="https://github.com" target="_blank" rel="noopener noreferrer" className="p-2.5 rounded-lg bg-white/5 hover:bg-brand-orange text-gray-300 hover:text-white transition-all duration-200">
+              <a 
+                href="https://github.com" 
+                target="_blank" 
+                rel="noopener noreferrer" 
+                aria-label="GitHub"
+                className="p-2.5 rounded-lg bg-white/5 hover:bg-brand-orange text-gray-300 hover:text-white transition-all duration-200"
+              >
                 <FaGithub className="w-4 h-4" />
               </a>
-              <a href="https://twitter.com" target="_blank" rel="noopener noreferrer" className="p-2.5 rounded-lg bg-white/5 hover:bg-brand-orange text-gray-300 hover:text-white transition-all duration-200">
+              <a 
+                href="https://twitter.com" 
+                target="_blank" 
+                rel="noopener noreferrer" 
+                aria-label="Twitter"
+                className="p-2.5 rounded-lg bg-white/5 hover:bg-brand-orange text-gray-300 hover:text-white transition-all duration-200"
+              >
                 <FaTwitter className="w-4 h-4" />
               </a>
-              <a href="https://wa.me/256777123456" target="_blank" rel="noopener noreferrer" className="p-2.5 rounded-lg bg-white/5 hover:bg-emerald-500 text-gray-300 hover:text-white transition-all duration-200">
+              <a 
+                href="https://wa.me/256777123456" 
+                target="_blank" 
+                rel="noopener noreferrer" 
+                aria-label="WhatsApp"
+                className="p-2.5 rounded-lg bg-white/5 hover:bg-emerald-500 text-gray-300 hover:text-white transition-all duration-200"
+              >
                 <FaWhatsapp className="w-4 h-4" />
               </a>
             </div>
@@ -74,11 +97,11 @@ const Footer = () => {
               Solutions
             </h3>
             <ul className="space-y-2.5">
-              <li><a href="#web-dev" className="hover:text-brand-orange transition-colors">Web Systems</a></li>
-              <li><a href="#custom-software" className="hover:text-brand-orange transition-colors">Custom Software</a></li>
-              <li><a href="#microfinance-systems" className="hover:text-brand-orange transition-colors">Fintech Solutions</a></li>
-              <li><a href="#network-security" className="hover:text-brand-orange transition-colors">Network & Security</a></li>
-              <li><a href="#cloud" className="hover:text-brand-orange transition-colors">Cloud & DevOps</a></li>
+              <li><a href="#portfolio" className="hover:text-brand-orange transition-colors">Web Systems</a></li>
+              <li><a href="#portfolio" className="hover:text-brand-orange transition-colors">Custom Software</a></li>
+              <li><a href="#portfolio" className="hover:text-brand-orange transition-colors">Fintech Solutions</a></li>
+              <li><a href="#portfolio" className="hover:text-brand-orange transition-colors">Network & Security</a></li>
+              <li><a href="#portfolio" className="hover:text-brand-orange transition-colors">Cloud & DevOps</a></li>
             </ul>
           </div>
 

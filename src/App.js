@@ -18,11 +18,11 @@ function App() {
        <About />
       <Services />
       <Portfolio />
+       <Dashboard />
       <Pricing />
       <ContactQuote />
       <Footer />
       <WhatsAppButton />
-      <Dashboard />
      
     </div>
   );

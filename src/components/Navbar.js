@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { Menu, X, Phone } from 'lucide-react';
+import { Menu, X, Phone, LayoutDashboard,  } from 'lucide-react';
 
 const Navbar = () => {
   const [isOpen, setIsOpen] = useState(false);
@@ -31,6 +31,7 @@ const Navbar = () => {
             <div className="flex items-center space-x-2">
               <span className="text-2xl font-black text-white tracking-wider">
                 ANSO<span className="text-brand-orange">TECH</span>
+                <p className="text-xs text-gray-400 font-normal">Your vision, our technology</p>
               </span>
               <span className="bg-brand-cyan/20 text-brand-cyan text-[10px] font-bold px-2 py-0.5 rounded border border-brand-cyan/30 tracking-widest uppercase">
                 UG
@@ -39,7 +40,7 @@ const Navbar = () => {
           </a>
 
           {/* Desktop Navigation Links */}
-          <div className="hidden md:flex items-center space-x-8">
+          <div className="hidden lg:flex items-center space-x-8">
             {navLinks.map((link) => (
               <a
                 key={link.name}
@@ -51,11 +52,11 @@ const Navbar = () => {
             ))}
           </div>
 
-          {/* Desktop Call to Action */}
-          <div className="hidden md:flex items-center space-x-6">
+          {/* Desktop Call to Action & Dashboard Link */}
+          <div className="hidden md:flex items-center space-x-5">
             <a
               href="tel:+256777036617"
-              className="flex items-center space-x-2 text-xs font-semibold text-gray-300 hover:text-white transition-colors"
+              className="hidden xl:flex items-center space-x-2 text-xs font-semibold text-gray-300 hover:text-white transition-colors"
             >
               <div className="p-2 rounded-full bg-white/5 border border-white/10 text-brand-cyan">
                 <Phone className="w-3.5 h-3.5" />
@@ -66,8 +67,18 @@ const Navbar = () => {
               </div>
             </a>
 
+            {/* Dashboard / Client Portal Link */}
             <a
-              href="#quote"
+              href="#Dashboard"
+              className="flex items-center space-x-2 bg-white/5 hover:bg-white/10 text-brand-cyan border border-brand-cyan/30 text-xs font-bold px-4 py-2.5 rounded-lg transition-all duration-200"
+            >
+              <LayoutDashboard className="w-4 h-4" />
+              <span>Dashboard</span>
+            </a>
+
+            {/* Get A Quote CTA */}
+            <a
+              href="#contact"
               className="bg-brand-orange hover:bg-orange-600 text-white text-xs font-bold tracking-wider uppercase px-5 py-2.5 rounded-lg transition-all duration-200 shadow-lg shadow-orange-500/20 hover:shadow-orange-500/40 active:scale-95"
             >
               Get A Quote
@@ -75,7 +86,14 @@ const Navbar = () => {
           </div>
 
           {/* Mobile Menu Button */}
-          <div className="md:hidden flex items-center">
+          <div className="md:hidden flex items-center space-x-3">
+            <a
+              href="/dashboard"
+              className="p-2 rounded-lg bg-white/5 border border-brand-cyan/30 text-brand-cyan hover:bg-white/10"
+              aria-label="Client Dashboard"
+            >
+              <LayoutDashboard className="w-5 h-5" />
+            </a>
             <button
               type="button"
               onClick={() => setIsOpen(!isOpen)}
@@ -105,6 +123,16 @@ const Navbar = () => {
           </div>
 
           <div className="pt-2 space-y-3">
+            {/* Mobile Dashboard Link */}
+            <a
+              href="/dashboard"
+              onClick={() => setIsOpen(false)}
+              className="flex items-center justify-center space-x-2 text-sm font-semibold text-brand-cyan bg-brand-cyan/10 border border-brand-cyan/30 py-3 rounded-lg"
+            >
+              <LayoutDashboard className="w-4 h-4" />
+              <span>Access Client Dashboard</span>
+            </a>
+
             <a
               href="tel:+256777036617"
               className="flex items-center justify-center space-x-2 text-sm font-semibold text-gray-300 bg-white/5 py-2.5 rounded-lg border border-white/10"
@@ -114,7 +142,7 @@ const Navbar = () => {
             </a>
 
             <a
-              href="#quote"
+              href="#contact"
               onClick={() => setIsOpen(false)}
               className="block text-center bg-brand-orange hover:bg-orange-600 text-white font-bold text-sm tracking-wider uppercase py-3 rounded-lg shadow-lg shadow-orange-500/20"
             >

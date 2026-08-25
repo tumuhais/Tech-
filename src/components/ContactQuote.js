@@ -1,12 +1,16 @@
 import React, { useState } from 'react';
 import { Send, CheckCircle2, AlertCircle, Loader2, Mail, Phone, MapPin } from 'lucide-react';
 
+// Firebase imports
+import { db } from './firebase'; // Adjust path if firebase.js is in a different directory
+import { collection, addDoc, serverTimestamp } from 'firebase/firestore';
+
 const Contact = () => {
   const [formData, setFormData] = useState({
     name: '',
     email: '',
     phone: '',
-    systemType: 'Custom System',
+    systemType: 'Microfinance & Loan System',
     message: ''
   });
 
@@ -22,25 +26,47 @@ const Contact = () => {
     setStatus('loading');
     setErrorMessage('');
 
+    // Basic Validation
+    if (!formData.name.trim() || !formData.email.trim() || !formData.message.trim()) {
+      setStatus('error');
+      setErrorMessage('Please fill in all required fields.');
+      return;
+    }
+
     try {
-      // Replace with your actual backend URL or local API endpoint
-      const response = await fetch('/api/contact', {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify(formData),
+      // Save form submission to Firestore 'contacts' collection
+      await addDoc(collection(db, 'contacts'), {
+        name: formData.name.trim(),
+        email: formData.email.trim().toLowerCase(),
+        phone: formData.phone.trim() || 'N/A',
+        systemType: formData.systemType,
+        message: formData.message.trim(),
+        createdAt: serverTimestamp(),
+        status: 'new' // Useful for admin dashboard filtering
       });
 
-      const data = await response.json();
-
-      if (response.ok) {
-        setStatus('success');
-        setFormData({ name: '', email: '', phone: '', systemType: 'Custom System', message: '' });
-      } else {
-        throw new Error(data.message || 'Failed to send message. Please try again.');
-      }
+      setStatus('success');
+      setFormData({
+        name: '',
+        email: '',
+        phone: '',
+        systemType: 'Microfinance & Loan System',
+        message: ''
+      });
     } catch (err) {
+      console.error("Firestore Error Code:", err.code);
+      console.error("Firestore Error Message:", err.message);
+      
       setStatus('error');
-      setErrorMessage(err.message || 'Something went wrong. Please check your connection.');
+
+      // Detailed error messages based on Firebase error codes
+      if (err.code === 'permission-denied') {
+        setErrorMessage('Submission rejected by database security rules. Please check Firestore permissions.');
+      } else if (err.code === 'unavailable') {
+        setErrorMessage('Network connection lost. Please verify your internet connection and try again.');
+      } else {
+        setErrorMessage(`Failed to send message: ${err.message || 'Unknown error occurred.'}`);
+      }
     }
   };
 
@@ -57,51 +83,67 @@ const Contact = () => {
             Request a System & Quote
           </h2>
           <p className="text-gray-400 mt-4 text-base leading-relaxed">
-            Have a project in mind or need a custom enterprise solution? Fill out the form below and our engineering team will get back to you promptly.
+            Have a project in mind or need a custom enterprise solution? Fill out the form below or visit us at our Nsambya office.
           </p>
         </div>
 
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 items-start">
           
-          {/* Left Column: Contact Details */}
-          <div className="lg:col-span-5 space-y-8 bg-brand-deepNavy/80 border border-white/10 p-8 rounded-2xl">
-            <div>
-              <h3 className="text-2xl font-bold text-white mb-4">Contact Information</h3>
-              <p className="text-gray-400 text-sm leading-relaxed mb-6">
-                Reach out directly for urgent consultations or custom IT infrastructure deployments.
-              </p>
+          {/* Left Column: Contact Details & Google Map */}
+          <div className="lg:col-span-5 space-y-8">
+            <div className="bg-brand-deepNavy/80 border border-white/10 p-8 rounded-2xl space-y-8">
+              <div>
+                <h3 className="text-2xl font-bold text-white mb-4">Contact Information</h3>
+                <p className="text-gray-400 text-sm leading-relaxed">
+                  Reach out directly for urgent consultations or custom IT infrastructure deployments.
+                </p>
+              </div>
+
+              <div className="space-y-6">
+                <div className="flex items-start space-x-4">
+                  <div className="p-3 bg-white/5 border border-white/10 rounded-xl text-brand-cyan">
+                    <Mail className="w-5 h-5" />
+                  </div>
+                  <div>
+                    <h4 className="text-xs font-semibold text-gray-400 uppercase tracking-wider">Email Us</h4>
+                    <p className="text-white text-sm font-medium mt-0.5">info@ansotech.com</p>
+                  </div>
+                </div>
+
+                <div className="flex items-start space-x-4">
+                  <div className="p-3 bg-white/5 border border-white/10 rounded-xl text-brand-orange">
+                    <Phone className="w-5 h-5" />
+                  </div>
+                  <div>
+                    <h4 className="text-xs font-semibold text-gray-400 uppercase tracking-wider">Call / WhatsApp</h4>
+                    <p className="text-white text-sm font-medium mt-0.5">+256 726 627 892</p>
+                  </div>
+                </div>
+
+                <div className="flex items-start space-x-4">
+                  <div className="p-3 bg-white/5 border border-white/10 rounded-xl text-brand-cyan">
+                    <MapPin className="w-5 h-5" />
+                  </div>
+                  <div>
+                    <h4 className="text-xs font-semibold text-gray-400 uppercase tracking-wider">Location</h4>
+                    <p className="text-white text-sm font-medium mt-0.5">Nsambya, Kampala, Uganda</p>
+                  </div>
+                </div>
+              </div>
             </div>
 
-            <div className="space-y-6">
-              <div className="flex items-start space-x-4">
-                <div className="p-3 bg-white/5 border border-white/10 rounded-xl text-brand-cyan">
-                  <Mail className="w-5 h-5" />
-                </div>
-                <div>
-                  <h4 className="text-xs font-semibold text-gray-400 uppercase tracking-wider">Email Us</h4>
-                  <p className="text-white text-sm font-medium mt-0.5">info@ansotech.com</p>
-                </div>
-              </div>
-
-              <div className="flex items-start space-x-4">
-                <div className="p-3 bg-white/5 border border-white/10 rounded-xl text-brand-orange">
-                  <Phone className="w-5 h-5" />
-                </div>
-                <div>
-                  <h4 className="text-xs font-semibold text-gray-400 uppercase tracking-wider">Call / WhatsApp</h4>
-                  <p className="text-white text-sm font-medium mt-0.5">+256 700 000 000</p>
-                </div>
-              </div>
-
-              <div className="flex items-start space-x-4">
-                <div className="p-3 bg-white/5 border border-white/10 rounded-xl text-brand-cyan">
-                  <MapPin className="w-5 h-5" />
-                </div>
-                <div>
-                  <h4 className="text-xs font-semibold text-gray-400 uppercase tracking-wider">Location</h4>
-                  <p className="text-white text-sm font-medium mt-0.5">Kampala, Uganda</p>
-                </div>
-              </div>
+            {/* Embedded Google Map */}
+            <div className="bg-brand-deepNavy/80 border border-white/10 p-2 rounded-2xl overflow-hidden shadow-xl">
+              <iframe
+                title="AnsoTech Nsambya Office Location"
+                src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d15959.027003050967!2d32.5800!3d0.3000!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x177dbb816a75f0a3%3A0x286395fb42588c2f!2sNsambya%2C%20Kampala!5e0!3m2!1sen!2sug!4v1700000000000!5m2!1sen!2sug"
+                width="100%"
+                height="240"
+                style={{ border: 0, borderRadius: '0.75rem' }}
+                allowFullScreen=""
+                loading="lazy"
+                referrerPolicy="no-referrer-when-downgrade"
+              ></iframe>
             </div>
           </div>
 
@@ -144,7 +186,7 @@ const Contact = () => {
                       required
                       value={formData.name}
                       onChange={handleChange}
-                      placeholder="e.g. John Doe"
+                      placeholder="e.g.ansotechcompany"
                       className="w-full bg-white/5 border border-white/10 rounded-xl px-4 py-3 text-white placeholder-gray-500 text-sm focus:outline-none focus:border-brand-orange transition-colors"
                     />
                   </div>
@@ -160,7 +202,7 @@ const Contact = () => {
                       required
                       value={formData.email}
                       onChange={handleChange}
-                      placeholder="e.g. john@example.com"
+                      placeholder="e.g. info@ansotech.com"
                       className="w-full bg-white/5 border border-white/10 rounded-xl px-4 py-3 text-white placeholder-gray-500 text-sm focus:outline-none focus:border-brand-orange transition-colors"
                     />
                   </div>
@@ -177,7 +219,7 @@ const Contact = () => {
                       name="phone"
                       value={formData.phone}
                       onChange={handleChange}
-                      placeholder="+256 700 000 000"
+                      placeholder="+256 726 627 892"
                       className="w-full bg-white/5 border border-white/10 rounded-xl px-4 py-3 text-white placeholder-gray-500 text-sm focus:outline-none focus:border-brand-orange transition-colors"
                     />
                   </div>
