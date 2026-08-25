@@ -91,20 +91,6 @@ const Footer = () => {
             </ul>
           </div>
 
-          {/* COLUMN 4: SERVICES */}
-          <div>
-            <h3 className="text-white font-semibold text-base mb-4 border-l-2 border-brand-orange pl-2">
-              Solutions
-            </h3>
-            <ul className="space-y-2.5">
-              <li><a href="#portfolio" className="hover:text-brand-orange transition-colors">Web Systems</a></li>
-              <li><a href="#portfolio" className="hover:text-brand-orange transition-colors">Custom Software</a></li>
-              <li><a href="#portfolio" className="hover:text-brand-orange transition-colors">Fintech Solutions</a></li>
-              <li><a href="#portfolio" className="hover:text-brand-orange transition-colors">Network & Security</a></li>
-              <li><a href="#portfolio" className="hover:text-brand-orange transition-colors">Cloud & DevOps</a></li>
-            </ul>
-          </div>
-
           {/* COLUMN 5: CONTACT INFO */}
           <div>
             <h3 className="text-white font-semibold text-base mb-4 border-l-2 border-brand-orange pl-2">
